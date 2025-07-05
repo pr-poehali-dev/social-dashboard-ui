@@ -99,6 +99,55 @@ const Index = () => {
     },
   ];
 
+  // Мокап постов пользователя о Clash Royale
+  const userPosts = [
+    {
+      id: 1,
+      time: "1 час назад",
+      content:
+        "Наконец-то дошел до 6000 кубков! 🏆 Новая колода с Хогом и Мусорщиком творит чудеса. Кто еще играет в CR?",
+      likes: 156,
+      comments: 24,
+      image: "🏆",
+    },
+    {
+      id: 2,
+      time: "3 часа назад",
+      content:
+        "Только что выиграл турнир! Мегарыцарь в последний момент спас партию 🗡️ Адреналин зашкаливает!",
+      likes: 203,
+      comments: 38,
+      image: "🗡️",
+    },
+    {
+      id: 3,
+      time: "5 часов назад",
+      content:
+        "Обновление принесло новые карты! Уже тестирую Электро-дракона в боях. Кто-нибудь пробовал? 🐉⚡",
+      likes: 89,
+      comments: 17,
+      image: "🐉",
+    },
+    {
+      id: 4,
+      time: "1 день назад",
+      content:
+        "Клановые войны на новом уровне! Наш клан 'Космические Рыцари' занял 2 место в лиге 🚀👑",
+      likes: 127,
+      comments: 31,
+      image: "👑",
+    },
+    {
+      id: 5,
+      time: "2 дня назад",
+      content:
+        "Собрал идеальную защитную колоду! Инферно-башня + Ледяной дух останавливают любой пуш ❄️🔥",
+      likes: 95,
+      comments: 22,
+      image: "❄️",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
@@ -206,6 +255,75 @@ const Index = () => {
                         {user.posts}
                       </span>
                     </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Мои посты */}
+            <div className="mt-8">
+              <Card className="bg-gray-800 border-gray-700">
+                <CardHeader>
+                  <CardTitle className="text-white flex items-center">
+                    <Icon name="Grid3X3" size={20} className="mr-2" />
+                    Мои посты
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {userPosts.map((post) => (
+                      <div
+                        key={post.id}
+                        className="bg-gray-700 rounded-lg p-4 hover:bg-gray-600 transition-colors"
+                      >
+                        <div className="flex items-center space-x-3 mb-3">
+                          <Avatar className="w-10 h-10">
+                            <AvatarImage src={user.avatar} alt={user.name} />
+                            <AvatarFallback>АК</AvatarFallback>
+                          </Avatar>
+                          <div className="flex-1">
+                            <h3 className="text-white font-semibold">
+                              {user.name}
+                            </h3>
+                            <p className="text-gray-400 text-sm">
+                              {user.username} • {post.time}
+                            </p>
+                          </div>
+                          <div className="text-3xl">{post.image}</div>
+                        </div>
+                        <p className="text-gray-300 mb-3">{post.content}</p>
+                        <div className="flex items-center space-x-6">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-gray-400 hover:text-red-400"
+                          >
+                            <Icon name="Heart" size={16} className="mr-1" />
+                            {post.likes}
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-gray-400 hover:text-blue-400"
+                          >
+                            <Icon
+                              name="MessageCircle"
+                              size={16}
+                              className="mr-1"
+                            />
+                            {post.comments}
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-gray-400 hover:text-green-400"
+                          >
+                            <Icon name="Share" size={16} className="mr-1" />
+                            Поделиться
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
